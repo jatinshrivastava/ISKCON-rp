@@ -1,0 +1,103 @@
+{% extends "base.html" %} {% block page_content %}
+<main>
+    <!-- Mask & flexbox options-->
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h2>Chapter: {{ shloka.chapter }} Shloka: {{ shloka.shloka_no }}</h2>
+        <!--First row-->
+        <div class="row features-small mb-5 mt-3 wow fadeIn">
+
+            <!--First column-->
+            <div class="col-lg-4 col-md-12">
+                <!--First row-->
+                <div class="row">
+                    <div class="col-2">
+                        <h6 class="feature-title">Shloka:</h6>
+                    </div>
+                    <div class="col-10">
+                        <br>
+                        <p class="grey-text">{{ shloka.shloka }}
+                        </p>
+                        <div style="height:15px"></div>
+                    </div>
+                </div>
+                <!--/First row-->
+
+                <!--Second row-->
+                <div class="row">
+                    <div class="col-2">
+                        <h6 class="feature-title">Word Meaning:</h6>
+                    </div>
+                    <div class="col-10">
+                        <br>
+                        <p class="grey-text">{{ shloka.word_meaning }}
+                        </p>
+                        <div style="height:15px"></div>
+                    </div>
+                </div>
+                <!--/Second row-->
+
+
+
+
+            </div>
+            <!--/First column-->
+
+            <!--Second column-->
+            <div class="col-lg-4 col-md-12 flex-center mt-5 mb-5">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{shloka.video_id}}"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+            <!--/Second column-->
+
+            <!--Third column-->
+            <div class="col-lg-4 col-md-12 mt-2">
+                <!--First row-->
+                <div class="row">
+                    <div class="col-2">
+                        <h6 class="feature-title">Meaning:</h6>
+                    </div>
+                    <div class="col-10">
+                        <br>
+                        <p class="grey-text">{{ shloka.meaning }}
+                        </p>
+                        <div style="height:15px"></div>
+                    </div>
+                </div>
+                <!--/First row-->
+
+                <!--Second row-->
+                <div class="row">
+                    <div class="col-2">
+                        <h6 class="feature-title">Explanation:</h6>
+                    </div>
+                    <div class="col-10">
+                        <br>
+                        <p class="grey-text">{{ shloka.explanation }}
+                        </p>
+                        <div style="height:15px"></div>
+                    </div>
+                </div>
+                <!--/Second row-->
+
+            </div>
+            <!--/Third column-->
+
+        </div>
+        <!--/First row-->
+
+    </div>
+</main>
+
+{% endblock %}
+{% block javascript %}
+<script>
+    $("#shloka_chapter").change(function () {
+        console.log($(this).val());
+    });
+</script>
+{% endblock %}
