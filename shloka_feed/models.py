@@ -7,7 +7,7 @@ class Shloka(models.Model):
     word_meaning = models.TextField()
     meaning = models.TextField()
     explanation = models.TextField()
-    video_id = models.CharField(max_length=11)
+    video_url = models.URLField()
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

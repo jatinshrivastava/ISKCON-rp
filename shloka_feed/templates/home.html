@@ -46,11 +46,27 @@
             <!--/First column-->
 
             <!--Second column-->
-            <div class="col-lg-4 col-md-12 flex-center mt-5 mb-5">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{shloka.video_id}}"
-                        allowfullscreen></iframe>
+            <div class="col-lg-4 col-md-12 mt-5 mb-5">
+                <div class="row">
+
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{ url }}" allowfullscreen></iframe>
+                    </div>
+
                 </div>
+                <!--First row-->
+                <div class="row  d-flex justify-content-center">
+                    <div class="">{% if prev_shloka.id == shloka.id %}{% else %}
+                        <button type="button" class="btn btn-warning" id="prev"
+                            onclick="window.location.href='{% url 'desired_shloka' pshloka=prev_shloka.id %}'"><i
+                                class="fas fa-angle-left"></i><a href=""></a></button>
+                        {% endif %}{% if next_shloka.id == shloka.id %}{% else %}
+                        <button type="button" class="btn btn-warning" id="next"
+                            onclick="window.location.href='{% url 'desired_shloka' pshloka=next_shloka.id %}'"><i
+                                class="fas fa-angle-right"></i></button>{% endif %}
+                    </div>
+                </div>
+                <!--/First row-->
             </div>
             <!--/Second column-->
 
