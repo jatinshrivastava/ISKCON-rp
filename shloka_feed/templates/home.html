@@ -1,119 +1,124 @@
 {% extends "base.html" %} {% block page_content %}
-<main>
-    <!-- Mask & flexbox options-->
-    <br>
-    <br>
-    <br>
-    <div class="container">
-        <h2>Chapter: {{ shloka.chapter }} Shloka: {{ shloka.shloka_no }}</h2>
+<!-- Mask & flexbox options-->
+
+<h2 class="mt-5 text-center">Chapter: {{ shloka.chapter }} Shloka: {{ shloka.shloka_no }}</h2>
+<hr class="w-50">
+
+<!--First row-->
+<div class="row features-small mb-5 mt-5 wow fadeIn">
+
+    <!--First column-->
+    <div class="col-lg-4 col-md-12">
         <!--First row-->
-        <div class="row features-small mb-5 mt-3 wow fadeIn">
-
-            <!--First column-->
-            <div class="col-lg-4 col-md-12">
-                <!--First row-->
-                <div class="row">
-                    <div class="col-2">
-                        <h6 class="feature-title">Shloka:</h6>
-                    </div>
-                    <div class="col-10">
-                        <br>
-                        <p class="grey-text">{{ shloka.shloka }}
-                        </p>
-                        <div style="height:15px"></div>
-                    </div>
-                </div>
-                <!--/First row-->
-
-                <!--Second row-->
-                <div class="row">
-                    <div class="col-2">
-                        <h6 class="feature-title">Word Meaning:</h6>
-                    </div>
-                    <div class="col-10">
-                        <br>
-                        <p class="grey-text">{{ shloka.word_meaning }}
-                        </p>
-                        <div style="height:15px"></div>
-                    </div>
-                </div>
-                <!--/Second row-->
-
-
-
-
+        <div class="row">
+            <div class="col-2">
+                <h6 class="feature-title">Shloka:</h6>
             </div>
-            <!--/First column-->
-
-            <!--Second column-->
-            <div class="col-lg-4 col-md-12 mt-5 mb-5">
-                <div class="row">
-
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{ url }}" allowfullscreen></iframe>
-                    </div>
-
-                </div>
-                <!--First row-->
-                <div class="row  d-flex justify-content-center">
-                    <div class="">{% if prev_shloka.id == shloka.id %}{% else %}
-                        <button type="button" class="btn btn-warning" id="prev"
-                            onclick="window.location.href='{% url 'desired_shloka' pshloka=prev_shloka.id %}'"><i
-                                class="fas fa-angle-left"></i><a href=""></a></button>
-                        {% endif %}{% if next_shloka.id == shloka.id %}{% else %}
-                        <button type="button" class="btn btn-warning" id="next"
-                            onclick="window.location.href='{% url 'desired_shloka' pshloka=next_shloka.id %}'"><i
-                                class="fas fa-angle-right"></i></button>{% endif %}
-                    </div>
-                </div>
-                <!--/First row-->
+            <div class="col-10">
+                <br>
+                <p class="grey-text">{{ shloka.shloka }}
+                </p>
+                <div style="height:15px"></div>
             </div>
-            <!--/Second column-->
-
-            <!--Third column-->
-            <div class="col-lg-4 col-md-12 mt-2">
-                <!--First row-->
-                <div class="row">
-                    <div class="col-2">
-                        <h6 class="feature-title">Meaning:</h6>
-                    </div>
-                    <div class="col-10">
-                        <br>
-                        <p class="grey-text">{{ shloka.meaning }}
-                        </p>
-                        <div style="height:15px"></div>
-                    </div>
-                </div>
-                <!--/First row-->
-
-                <!--Second row-->
-                <div class="row">
-                    <div class="col-2">
-                        <h6 class="feature-title">Explanation:</h6>
-                    </div>
-                    <div class="col-10">
-                        <br>
-                        <p class="grey-text">{{ shloka.explanation }}
-                        </p>
-                        <div style="height:15px"></div>
-                    </div>
-                </div>
-                <!--/Second row-->
-
-            </div>
-            <!--/Third column-->
-
         </div>
         <!--/First row-->
 
+        <!--Second row-->
+        <div class="row">
+            <div class="col-2">
+                <h6 class="feature-title">Word Meaning:</h6>
+            </div>
+            <div class="col-10">
+                <br>
+                <p class="grey-text">{{ shloka.word_meaning }}
+                </p>
+                <div style="height:15px"></div>
+            </div>
+        </div>
+        <!--/Second row-->
+
+
+
+
     </div>
-</main>
+    <!--/First column-->
+
+    <!--Second column-->
+    <div class="col-lg-4 col-md-12 mt-5 mb-5">
+        <div class="row">
+
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{ url }}" allowfullscreen></iframe>
+            </div>
+
+        </div>
+        <!--First row-->
+        <div class="row  d-flex justify-content-center">
+            <div class="">{% if prev_shloka.id == shloka.id %}{% else %}
+                <button type="button" class="btn btn-warning" id="prev"
+                    onclick="window.location.href='{% url 'desired_shloka' chapter=prev_shloka.chapter shloka_no=prev_shloka.shloka_no %}'"><i
+                        class="fas fa-angle-left"></i><a href=""></a></button>
+                {% endif %}{% if next_shloka.id == shloka.id %}{% else %}
+                <button type="button" class="btn btn-warning" id="next"
+                    onclick="window.location.href='{% url 'desired_shloka' chapter=next_shloka.chapter shloka_no=next_shloka.shloka_no %}'"><i
+                        class="fas fa-angle-right"></i></button>{% endif %}
+            </div>
+        </div>
+        <!--/First row-->
+    </div>
+    <!--/Second column-->
+
+    <!--Third column-->
+    <div class="col-lg-4 col-md-12 mt-2">
+        <!--First row-->
+        <div class="row">
+            <div class="col-2">
+                <h6 class="feature-title">Meaning:</h6>
+            </div>
+            <div class="col-10">
+                <br>
+                <p class="grey-text">{{ shloka.meaning }}
+                </p>
+                <div style="height:15px"></div>
+            </div>
+        </div>
+        <!--/First row-->
+
+        <!--Second row-->
+        <div class="row">
+            <div class="col-2">
+                <h6 class="feature-title">Explanation:</h6>
+            </div>
+            <div class="col-10">
+                <br>
+                <p class="grey-text">{{ shloka.explanation }}
+                </p>
+                <div style="height:15px"></div>
+            </div>
+        </div>
+        <!--/Second row-->
+
+    </div>
+    <!--/Third column-->
+
+</div>
+<!--/First row-->
 
 {% endblock %}
 {% block javascript %}
 <script>
-    $("#shloka_chapter").change(function () {
-        console.log($(this).val());
-    });
+    /*  function validateForm() {
+        console.log("entry")
+        var chapter = $("#chapter");
+        var shloka_no = $("#shloka_no");
+        if (chapter.val() == "") {
+            console.log("no chapter")
+            chapter.val('chapter option:second');
+            shloka_no.val('{{ shloka.shloka_no }}')
+        } else if (chapter.val() != '' & shloka_no.val() == '') {
+            shloka_no.val('shloka_no option:second');
+        }
+
+    } */
 </script>
 {% endblock %}

@@ -5,9 +5,10 @@ from . import views
 from django.conf import settings
 
 urlpatterns = [
-    path("", views.latest_shloka, name='latest_shloka'),
+    path("", views.chapter_index, name='chapter_index'),
     #path("ch=<int:pchapter>/no=<int:number>", views.next_shloka, name='next_shloka'),
-    path("id=<int:pshloka>", views.desired_shloka, name='desired_shloka'),
+    path("<int:chapter>/<int:shloka_no>", views.desired_shloka, name='desired_shloka'),
+    path('ajax/load_shlokas/', views.load_shlokas, name='ajax_load_shlokas'),
   ]
 
 if settings.DEBUG:

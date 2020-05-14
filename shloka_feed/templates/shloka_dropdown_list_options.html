@@ -1,0 +1,4 @@
+<option value="">Verse</option>
+{% for shloka in shlokas %}
+<option value="{{ shloka.shloka_no }}">{{ shloka.shloka_no }}. {{ shloka.shloka | slice:":20" }}...</option>
+{% endfor %}
