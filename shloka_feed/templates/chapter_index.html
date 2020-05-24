@@ -1,59 +1,72 @@
-{% extends "base.html" %} {% block page_content %}
+{% extends "base.html" %}
+{% block title %}Hare Krishna Centre | Home{% endblock %}
+{% block landing_page %}
+<div class="reduced-margin">
+
+        <!-- Grid column -->
+        <div class="mt-5">
+                <br>
+                <div class="">
+                        <img src="https://ik.imagekit.io/zohf1gdzi/main_landig_page_cfDg41X_k.png"
+                                class="img-fluid z-depth-1" alt="Responsive image">
+                </div>
+        </div>
+        <!-- Grid column -->
+
+</div>
+<!-- Grid row -->
+{% endblock %}
+
+{% block page_content %}
 <!-- Mask & flexbox options-->
-
-
-<div class="mt-5">
-    <h2 class="h2-responsive text-center mt-4 grey-text wow fadeIn"><strong>Chapter List</strong></h2>
-    <hr class="heading-hr black-text mb-5 wow headShake">
-    <ul class="list-group list-group-flush w-50 mx-auto">
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=1 shloka_no=1 %}"> 1: Observing
-                the Armies on the
-                Battlefield of Kuruksetra</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=2 shloka_no=1 %}"> 2: Contents of
-                the Gita
-                Summarized</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=3 shloka_no=1 %}"> 3:
-                Karma-yoga</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=4 shloka_no=1 %}"> 4:
-                Transcendental Knowledge</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=5 shloka_no=1 %}"> 5:
-                Karma-yoga-Action in Krsna
-                Consciousness</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=6 shloka_no=1 %}"> 6:
-                Sankhya-yoga</a></li>
-
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=7 shloka_no=1 %}"> 7: Knowledge of
-                the Absolute</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=8 shloka_no=1 %}"> 8: Attaining the
-                Supreme</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=9 shloka_no=1 %}"> 9: The Most
-                Confidential
-                Knowledge</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=10 shloka_no=1 %}"> 10: The
-                Opulence of the Absolute</a>
-        </li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=11 shloka_no=1 %}"> 11: The
-                Universal Form</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=12 shloka_no=1 %}"> 12: Devotional
-                Service</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=13 shloka_no=1 %}"> 13: Nature, the
-                Enjoyer, and
-                Consciousness</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=14 shloka_no=1 %}"> 14: The Three
-                Modes of Material
-                Nature</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=15 shloka_no=1 %}"> 15: The Yoga of
-                the Supreme
-                Person</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=16 shloka_no=1 %}"> 16: The Divine
-                and Demoniac
-                Natures</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=17 shloka_no=1 %}"> 17: The
-                Divisions of Faith</a></li>
-        <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=18 shloka_no=1 %}"> 18:
-                Conclusion-The Perfection of
-                Renunciation</a></li>
-    </ul>
+<!-- Grid row -->
+<div class="mt-5 mb-5">
+        <h2 class="h2-responsive text-center mt-4 grey-text wow fadeIn"><strong>अध्याय सूची</strong></h2>
+        <hr class="heading-hr black-text mb-5 wow headShake">
+        <ul class="list-group list-group-flush col-lg-10 mx-auto">
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=1 shloka_no=0 %}"
+                                style="color:black"> 1: कुरुक्षेत्र के युद्धस्थल में सैन्यनिरीक्षण</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=2 shloka_no=0 %}"
+                                style="color:black"> 2: गीता का सार</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=3 shloka_no=0 %}"
+                                style="color:black"> 3:
+                                कर्मयोग</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=4 shloka_no=0 %}"
+                                style="color:black"> 4:
+                                दिव्य ज्ञान</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=5 shloka_no=0 %}"
+                                style="color:black"> 5:
+                                कर्मयोग - कृष्णभावनाभावित कर्म</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=6 shloka_no=0 %}"
+                                style="color:black"> 6:
+                                ध्यानयोग</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=7 shloka_no=0 %}"
+                                style="color:black"> 7: भगवद्ज्ञान</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=8 shloka_no=0 %}"
+                                style="color:black"> 8: भगवत्प्राप्ति</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=9 shloka_no=0 %}"
+                                style="color:black"> 9: परम गुह्य ज्ञान</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=10 shloka_no=0 %}"
+                                style="color:black"> 10: श्रीभगवान् का ऐश्वर्य</a>
+                </li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=11 shloka_no=0 %}"
+                                style="color:black"> 11: विराट रूप</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=12 shloka_no=0 %}"
+                                style="color:black"> 12: भक्तियोग</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=13 shloka_no=0 %}"
+                                style="color:black"> 13: प्रकृति, पुरुष तथा चेतना</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=14 shloka_no=0 %}"
+                                style="color:black"> 14: प्रकृति के तीन गुण</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=15 shloka_no=0 %}"
+                                style="color:black"> 15: पुरुषोत्तम योग</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=16 shloka_no=0 %}"
+                                style="color:black"> 16: दैवी और आसुरी स्वभाव</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=17 shloka_no=0 %}"
+                                style="color:black"> 17: श्रद्धा के विभाग</a></li>
+                <li class="list-group-item"><a href="{% url 'desired_shloka' chapter=18 shloka_no=0 %}"
+                                style="color:black"> 18:
+                                उपसंहार - संन्यास की सिद्धि</a></li>
+        </ul>
 </div>
 
 

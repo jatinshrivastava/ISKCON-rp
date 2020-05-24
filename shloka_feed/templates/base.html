@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}{% endblock %}</title>
     <!-- Favicon-->
-    <link rel="icon" href="https://ik.imagekit.io/zohf1gdzi/GIIS_Favicon_LSiHsRH77.png">
+    <link rel="icon" href="https://ik.imagekit.io/zohf1gdzi/logo_qaV5wFMGW.png">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-11/css/all.css">
     <!-- Bootstrap -->
@@ -56,21 +56,27 @@
 
         @media (min-width: 800px) and (max-width: 850px) {
             .navbar:not(.top-nav-collapse) {
-                background: #e7e419 !important;
+                background: #ffbd00 !important;
             }
         }
 
         .top-nav-collapse,
         .footercolor {
-            background-color: #e7e419 !important;
+            background-color: #ffbd00 !important;
         }
 
         .navbar:not(.top-nav-collapse) {
-            background: #e7e419 !important;
+            background: #ffbd00 !important;
         }
 
-        .nav-link {
-            color: white !important;
+        .nav-link,
+        .footer-link {
+            color: #9e0059 !important;
+        }
+
+        .nav-link.active {
+            color: #9e0059 !important;
+            background-color: #ffbd00 !important;
         }
 
         .facebook-dark-hover,
@@ -93,7 +99,7 @@
         .googleplus-light-hover,
         .youtube-light-hover,
         .codepen-light-hover {
-            color: white !important;
+            color: #9e0059 !important;
             transition: all 0.25s ease-in-out;
         }
 
@@ -200,69 +206,73 @@
             width: 6vw;
         }
 
-        .circular-detail-container {
-            top: 15vh;
-            background: rgba(255, 255, 255, 0.63);
-        }
-
-        .conversation-index-container {
-            top: 15vh;
-            display: block;
-            position: relative;
-            background: rgba(255, 255, 255, 0.63);
-        }
-
-        .messages-outer-container {
-            top: 15vh;
-            display: block;
-            position: relative;
-            background: transparent;
-        }
-
-        .background {
-            /* The image used */
-            background-image: url("https://ik.imagekit.io/zohf1gdzi/bookcase-books-bookshelves-270571_zgmwkJXdM.jpg");
-            /* Full height */
-            height: 100%;
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .conversation-index-background {
-            position: initial;
-            background: #105caa;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to bottom, #105caa, #0BC9CD, white);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to bottom, #105caa, #0BC9CD, white);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        }
-
-        .messages-background {
-            position: initial;
-            background: #105caa;
-            /* fallback for old browsers */
-            background: -webkit-linear-gradient(to bottom, #105caa, white);
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to bottom, #105caa, white);
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        }
-
-
         .btn-buttons {
-            background: #e7e419 !important;
+            background: #595959 !important;
             color: white;
         }
 
         .btn-buttons:hover {
-            background: #e7e419 !important;
+            background: #ffbd00 !important;
             color: white;
         }
 
-        .status-border {
-            border-width: medium !important;
+        .btn-icons {
+            color: #595959 !important;
+
+        }
+
+        .btn-icons:hover {
+            color: #ffbd00 !important;
+
+        }
+
+        .hoverable-div {
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            display: inline-block !important;
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+            margin-right: 1rem !important;
+            width: 45px;
+        }
+
+        #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 20px;
+            /* Place the button at the bottom of the page */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: grey;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 15px;
+            /* Some padding */
+            border-radius: 10px;
+            /* Rounded corners */
+
+        }
+
+        .reduced-margin {
+            margin-bottom: -3rem;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
         }
     </style>
 
@@ -275,13 +285,12 @@
         <div class="container">
 
             <!-- Brand -->
-            <a class="navbar-brand img-fluid wow flipInX" href="#">
-                <img src="https://ik.imagekit.io/zohf1gdzi/GIIS_Favicon_LSiHsRH77.png" class="img-fluid mr-5" alt=""
-                    style="width: 30px">
+            <a class="navbar-brand img-fluid wow flipInX" href="{% url 'chapter_index' %}">
+                <img src="https://ik.imagekit.io/zohf1gdzi/logo_qaV5wFMGW.png" class="img-fluid mr-5" alt="">
             </a>
 
             <!-- Collapse -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -290,32 +299,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <!-- Left -->
-                <ul class="navbar-nav nav-pills mx-0 wow fadeIn">
+                <ul class="navbar-nav nav-pills ml-auto wow fadeIn">
                     <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
-                        <a class="nav-link" href="">Iskcon Shlokas
+                        <a class="nav-link" href="{% url 'chapter_index' %}">
+                            <h5>Home</h5>
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                </ul>
-
-                <!-- Right -->
-                <ul class="navbar-nav nav-flex-icons ml-auto wow fadeIn">
-                    <li class="nav-item">
-                        <a href="https://www.facebook.com/giisnoida/" class="nav-link" target="_blank">
-                            <i class="fab fa-facebook-f facebook-light-hover"></i>
+                    <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <a class="nav-link" href="#Shlokas">
+                            <h5>Gita Shlokas</h5>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="https://twitter.com/Global_Schools" class="nav-link" target="_blank">
-                            <i class="fab fa-twitter twitter-light-hover"></i>
+                    <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <a class="nav-link" href="#Features">
+                            <h5>Gallery</h5>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="https://twitter.com/Global_Schools" class="nav-link" target="_blank">
-                            <i class="fab fa-youtube youtube-light-hover"></i>
+                    <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <a class="nav-link" href="#Convert">
+                            <h5>Events</h5>
                         </a>
                     </li>
-
+                    <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent">
+                        <a class="nav-link" href="#contactUs">
+                            <h5>Contact Us</h5>
+                        </a>
+                    </li>
                 </ul>
 
             </div>
@@ -323,47 +333,136 @@
         </div>
     </nav>
     <!-- Navbar -->
-    <main>
-        <div class="container">
+    <main>{% block landing_page %}{% endblock %}
+        <div class="container" id="Shlokas">
             <br>
             <br>
             <br>
+
             <div class="card justify-content-center mt-5 container col-lg-6">
                 <form class="form clearfix container mt-4 mb-3" method="POST" id="ShlokaForm"
                     data-shlokas-url="{% url 'ajax_load_shlokas' %}" novalidate>
                     {% csrf_token %}
                     <div class="d-flex justify-content-center">
                         <select name="chapter" id="chapter" class="browser-default custom-select col-8">
-                            <option value="">Chapter</option>
-                            <option value="1">1. Observing
-                                the Armies on the
-                                Battlefield of Kuruksetra</option>
-                            <option value="2">2. Contents of
-                                the Gita
-                                Summarized</option>
+                            <option value="">अध्याय</option>
+                            <option value="1">1. कुरुक्षेत्र के युद्धस्थल में सैन्यनिरीक्षण</option>
+                            <option value="2">2. गीता का सार</option>
                             <option value="3">3.
-                                Karma-yoga</option>
+                                कर्मयोग</option>
                             <option value="4">4.
-                                Transcendental Knowledge</option>
+                                दिव्य ज्ञान</option>
                             <option value="5">5.
-                                Karma-yoga-Action in Krsna
-                                Consciousness</option>
+                                कर्मयोग - कृष्णभावनाभावित कर्म</option>
                         </select>
                         &emsp;
                         <select name="shloka_no" class="browser-default custom-select col-4" id="shloka_no" required>
-                            <option value="" selected>Verse</option>
+                            <option value="" selected>छंद</option>
                         </select>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-warning">Go</button>
+                        <button type="submit" class="btn btn-buttons" id="submit_button">Go</button>
                     </div>
                 </form>
             </div>
             {% block page_content %}{% endblock %}
         </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button>
     </main>
+    <!-- Footer -->
+    <footer class="page-footer font-small footercolor pt-4" id="contactUs">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-4 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <div class="avatar text-center mx-auto whited w-50"><img
+                            src="https://ik.imagekit.io/zohf1gdzi/SP-pic_FlEzfUFQe.png" alt="avatar mx-auto white"
+                            class="rounded-circle img-fluid z-depth-1-half w-50">
+                    </div>
+                    <p class="text-center footer-link">Bhaktivedanta Swami Prabhupada</p>
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h4 class="text-uppercase footer-link mt-1"><strong>Address</strong></h4>
+
+                    <h6 class="footer-link">Hare Krishna Centre, 12/115 Geeta Colony, Delhi, India 110031</h6>
+
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h4 class="text-uppercase footer-link mt-1"><strong>Contact Us</strong></h4>
+
+                    <h6 class="footer-link">
+                        <p>Phone: +91 9811510090 </p>
+                        <p> Email: <a href="mailto:harekrishnacenter@gmail.com"
+                                class="footer-link "><u>harekrishnacenter@gmail.com</u></p>
+                        </a>
+                    </h6>
+
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <!-- Grid column -->
+                <div class="col-md-2 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h4 class="text-uppercase footer-link mt-1"><strong>Social</strong></h4>
+
+                    <div class="">
+                        <a href="https://m.facebook.com/hkcgc/" class="" target=" _blank">
+                            <i class="fab fa-facebook-f facebook-light-hover fa-2x"></i>
+                        </a>
+                        &emsp;
+                        <a href="https://www.youtube.com/channel/UC4WHumjRyghiLz880A4TS7g" class="" target="_blank">
+                            <i class="fab fa-youtube youtube-light-hover fa-2x"></i>
+                        </a>
+                        &emsp;
+                        <a href="https://www.instagram.com/iskconeastdelhi/?igshid=1ous9gwgq1alo" class=""
+                            target="_blank">
+                            <i class="fab fa-instagram instagram-light-hover fa-2x"></i>
+                        </a>
+                        &emsp;
+                        <a href="http://harekrishnacentre.com/" class="" target="_blank">
+                            <i class="fas fa-external-link-square-alt codepen-light-hover fa-2x"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
+            <a href="#"> Hare Krishna Centre </a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
     <!-- jQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type=" text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Popper.js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js">
@@ -390,7 +489,14 @@
     <!-- Custom Script -->
     <script>
         new WOW().init();
+        var submit_button = document.getElementById("submit_button")
+        submit_button.disabled = true
         $("#chapter").change(function () {
+            if ($("#chapter").val() == '') {
+                submit_button.disabled = true;
+            } else {
+                submit_button.disabled = false;
+            }
             var chapter = $(this).val();
             var url = $("#ShlokaForm").attr("data-shlokas-url");
             //console.log(url); // get the url of the `load_cities` view
@@ -408,11 +514,34 @@
                     );
                     // console.log(
                     //  data
-                    // ); 
+                    // );
                 }
             });
 
         });
+
+        //Scroll To Top Button
+        //Get the button:
+        mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
     </script>
     {% block javascript %}{% endblock %}
 </body>
