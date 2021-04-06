@@ -10,7 +10,8 @@ class CustomUserAdmin(UserAdmin):
         ("Credentials", {'fields': (
             'username', 'password')}),
         ("Basic Details", {'fields': (
-            'first_name', 'last_name', 'email', 'gender', 'birth_date', 'address',
+            ('first_name', 'last_name'), ('email', 'email_verified'), ('country_code', 'phone_number'), 'gender', 'birth_date', 'address',
+            'country_name',
             'date_joined')}),
         ("Permissions", {'fields': ('user_permissions',)}),
     )

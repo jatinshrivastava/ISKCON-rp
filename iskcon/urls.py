@@ -20,4 +20,5 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("shloka_feed.urls")),
+    path('users/', include('users.urls')),
 ]
