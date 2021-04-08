@@ -1,8 +1,9 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 # from django.contrib.auth.models import User
 # from django.db.models.signals import post_save
 # from django.core.validators import RegexValidator
-# from django.dispatch import receiver
 
 # class Profile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -18,6 +19,9 @@ from django.db import models
 # @receiver(post_save, sender=User)
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
+from users.constants import ANSWER_CHOICES
+
+
 class Shloka(models.Model):
     chapter = models.PositiveSmallIntegerField()
     shloka_no = models.PositiveSmallIntegerField()
@@ -27,6 +31,20 @@ class Shloka(models.Model):
     explanation = models.TextField()
     video_url = models.URLField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
+    quizIsActive = models.BooleanField(blank=False, default=False)
 
     class Meta:
-      unique_together = (("chapter", "shloka_no"),)
+        unique_together = (("chapter", "shloka_no"),)
+
+
+class QuizModel(models.Model):
+    chapter = models.PositiveSmallIntegerField(blank=False)
+    shloka_no = models.PositiveSmallIntegerField(blank=False)
+    shloka_id = models.ForeignKey('shloka_feed.Shloka', on_delete=models.CASCADE, blank=False)
+    question = models.TextField(blank=False)
+    optionA = models.TextField(blank=False, verbose_name="Option A")
+    optionB = models.TextField(blank=False, verbose_name="Option B")
+    optionC = models.TextField(blank=False, verbose_name="Option C")
+    optionD = models.TextField(blank=False, verbose_name="Option D")
+    answer = models.CharField(blank=False, choices=ANSWER_CHOICES, default='A', max_length=1)
+    point = models.PositiveSmallIntegerField(blank=False, default=5)

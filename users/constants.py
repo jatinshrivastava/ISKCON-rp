@@ -5,6 +5,13 @@ GENDER_CHOICES = [
     ('P', 'Prefer not to say'),
 ]
 
+ANSWER_CHOICES = [
+    ('A', 'Option A'),
+    ('B', 'Option B'),
+    ('C', 'Option C'),
+    ('D', 'Option D'),
+]
+
 COUNTRY_CODES = [('+93', 'Afghanistan (+93)'), ('+358-18', 'Aland Islands (+358-18)'), ('+355', 'Albania (+355)'),
                  ('+213', 'Algeria (+213)'), ('+1-684', 'American Samoa (+1-684)'), ('+376', 'Andorra (+376)'),
                  ('+244', 'Angola (+244)'), ('+1-264', 'Anguilla (+1-264)'), ('+', 'Antarctica (+)'),
