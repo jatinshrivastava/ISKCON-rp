@@ -1,10 +1,11 @@
 from django.contrib import admin
 
 from shloka_feed.forms import QuizModelForm
-from shloka_feed.models import Shloka, QuizModel
+from shloka_feed.models import Shloka, QuizModel, UserScoreModel
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.db.models import query
+from django.contrib.admin.utils import flatten_fieldsets
 
 # from shloka_feed.models import Profile
 #
@@ -45,5 +46,23 @@ class QuizModelAdmin(admin.ModelAdmin):
     pass
 
 
+class UserScoreModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'question', 'selected_choice', 'is_correct']
+    def get_readonly_fields(self, request, obj=None):
+        if request.user.is_superuser:
+            return self.readonly_fields
+
+        if self.declared_fieldsets:
+            return flatten_fieldsets(self.declared_fieldsets)
+        else:
+            return list(set(
+                [field.name for field in self.opts.local_fields] +
+                [field.name for field in self.opts.local_many_to_many]
+            ))
+
+    pass
+
+
 admin.site.register(Shloka, ShlokaAdmin)
 admin.site.register(QuizModel, QuizModelAdmin)
+admin.site.register(UserScoreModel, UserScoreModelAdmin)

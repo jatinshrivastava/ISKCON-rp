@@ -40,7 +40,7 @@ class Shloka(models.Model):
 class QuizModel(models.Model):
     chapter = models.PositiveSmallIntegerField(blank=False)
     shloka_no = models.PositiveSmallIntegerField(blank=False)
-    shloka_id = models.ForeignKey('shloka_feed.Shloka', on_delete=models.CASCADE, blank=False)
+    shloka = models.ForeignKey('shloka_feed.Shloka', on_delete=models.CASCADE, blank=False)
     question = models.TextField(blank=False)
     optionA = models.TextField(blank=False, verbose_name="Option A")
     optionB = models.TextField(blank=False, verbose_name="Option B")
@@ -48,3 +48,10 @@ class QuizModel(models.Model):
     optionD = models.TextField(blank=False, verbose_name="Option D")
     answer = models.CharField(blank=False, choices=ANSWER_CHOICES, default='A', max_length=1)
     point = models.PositiveSmallIntegerField(blank=False, default=5)
+
+
+class UserScoreModel(models.Model):
+    user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, blank=False)
+    question = models.ForeignKey('shloka_feed.QuizModel', on_delete=models.CASCADE, blank=False)
+    selected_choice = models.CharField(blank=False, choices=ANSWER_CHOICES, default='A', max_length=1)
+    is_correct = models.BooleanField(blank=False, default=False)
