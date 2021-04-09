@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.db.models import query
 from django.contrib.admin.utils import flatten_fieldsets
 
+
 # from shloka_feed.models import Profile
 #
 #
@@ -37,17 +38,20 @@ class QuizModelAdmin(admin.ModelAdmin):
     radio_fields = {'answer': admin.HORIZONTAL}
     exclude = ()
     fieldsets = (("", {'fields': (
-    'chapter', 'shloka_no', 'shloka_id', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'answer', 'point')}),)
+        'chapter', 'shloka_no', 'shloka_id', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'answer',
+        'point')}),)
     readonly_fields = ('shloka_id',)
 
     def save_model(self, request, obj, form, change):
         obj.shloka_id = Shloka.objects.get(chapter=obj.chapter, shloka_no=obj.shloka_no)
         super().save_model(request, obj, form, change)
+
     pass
 
 
 class UserScoreModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'user', 'question', 'selected_choice', 'is_correct']
+
     def get_readonly_fields(self, request, obj=None):
         if request.user.is_superuser:
             return self.readonly_fields
