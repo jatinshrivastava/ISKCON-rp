@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from shloka_feed.forms import QuizModelForm
-from shloka_feed.models import Shloka, QuizModel, UserScoreModel
+from shloka_feed.models import Shloka, QuizModel, UserAnswerModel
 from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.db.models import query
@@ -34,23 +34,23 @@ class ShlokaAdmin(admin.ModelAdmin):
 
 class QuizModelAdmin(admin.ModelAdmin):
     form = QuizModelForm
-    list_display = ['id', 'chapter', 'shloka_no', 'shloka_id', 'question']
+    list_display = ['id', 'chapter', 'shloka_no', 'shloka', 'question']
     radio_fields = {'answer': admin.HORIZONTAL}
     exclude = ()
     fieldsets = (("", {'fields': (
-        'chapter', 'shloka_no', 'shloka_id', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'answer',
+        'chapter', 'shloka_no', 'shloka', 'question', 'optionA', 'optionB', 'optionC', 'optionD', 'answer',
         'point')}),)
-    readonly_fields = ('shloka_id',)
+    readonly_fields = ('shloka',)
 
     def save_model(self, request, obj, form, change):
-        obj.shloka_id = Shloka.objects.get(chapter=obj.chapter, shloka_no=obj.shloka_no)
+        obj.shloka = Shloka.objects.get(chapter=obj.chapter, shloka_no=obj.shloka_no)
         super().save_model(request, obj, form, change)
 
     pass
 
 
-class UserScoreModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'question', 'selected_choice', 'is_correct']
+class UserAnswerModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'user', 'shloka', 'question', 'selected_choice', 'is_correct']
 
     def get_readonly_fields(self, request, obj=None):
         if request.user.is_superuser:
@@ -69,4 +69,4 @@ class UserScoreModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Shloka, ShlokaAdmin)
 admin.site.register(QuizModel, QuizModelAdmin)
-admin.site.register(UserScoreModel, UserScoreModelAdmin)
+admin.site.register(UserAnswerModel, UserAnswerModelAdmin)

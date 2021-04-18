@@ -50,8 +50,12 @@ class QuizModel(models.Model):
     point = models.PositiveSmallIntegerField(blank=False, default=5)
 
 
-class UserScoreModel(models.Model):
+class UserAnswerModel(models.Model):
     user = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE, blank=False)
+    shloka = models.ForeignKey('shloka_feed.Shloka', on_delete=models.CASCADE, blank=False)
     question = models.ForeignKey('shloka_feed.QuizModel', on_delete=models.CASCADE, blank=False)
     selected_choice = models.CharField(blank=False, choices=ANSWER_CHOICES, default='A', max_length=1)
     is_correct = models.BooleanField(blank=False, default=False)
+
+    class Meta:
+        unique_together = (("user", "question"),)

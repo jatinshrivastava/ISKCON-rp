@@ -18,14 +18,4 @@ class Migration(migrations.Migration):
             old_name='shloka_id',
             new_name='shloka',
         ),
-        migrations.CreateModel(
-            name='UserScoreModel',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('selected_choice', models.CharField(choices=[('A', 'Option A'), ('B', 'Option B'), ('C', 'Option C'), ('D', 'Option D')], default='A', max_length=1)),
-                ('is_correct', models.BooleanField(default=False)),
-                ('question', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shloka_feed.quizmodel')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
     ]
