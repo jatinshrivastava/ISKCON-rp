@@ -44,8 +44,11 @@ def desired_shloka(request, chapter,shloka_no):
         id = Shloka.objects.filter(Q(chapter=chapter) & Q(shloka_no=shloka_no)).values('id')[0]['id']
         shloka = Shloka.objects.get(id=id)
         current_user = request.user
-        quiz_attempted = UserAnswerModel.objects.filter(Q(user=current_user) & Q(shloka=shloka))
-        if not quiz_attempted:
+        if request.user.is_authenticated:
+            quiz_attempted = UserAnswerModel.objects.filter(Q(user=current_user) & Q(shloka=shloka))
+            if not quiz_attempted:
+                quiz_attempted = None
+        else:
             quiz_attempted = None
 
         question_data = QuizModel.objects.filter(shloka=shloka)
@@ -89,14 +92,13 @@ def desired_shloka(request, chapter,shloka_no):
             chapter_name = 'उपसंहार - संन्यास की सिद्धि'
         #form
         if request.method == 'POST':
-            if 'change_shloka' in request.POST:
+            if "change_shloka" in request.POST:
                 form = ShlokaForm(request.POST)
                 chapter = form.data['chapter']
                 shloka_no = form.data['shloka_no']
                 url = reverse('desired_shloka', kwargs={'chapter':chapter, 'shloka_no':shloka_no})
                 return HttpResponseRedirect(url)
-            else:
-                print("received post request!!! ")
+            elif 'data' in request.POST:
                 responseArr = request.POST.get("data", "")
                 parsedArray = json.loads(responseArr)
                 for element in parsedArray:

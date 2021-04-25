@@ -111,7 +111,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login</button></a>
                     </div>
                 </div>
             </div>
@@ -427,7 +427,7 @@
       totalMarks += {{questionDataElement.point}}
       totalQuestions += 1
       {% for quiz_attempted_Element in quiz_attempted %}
-        {% if questionDataElement == quiz_attempted_Element.question and quiz_attempted_Element.is_correct == true %}
+        {% if questionDataElement == quiz_attempted_Element.question and quiz_attempted_Element.is_correct == True %}
         marksObtained += {{questionDataElement.point}}
         correctAnswer += 1
         {% endif %}
