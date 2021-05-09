@@ -348,7 +348,7 @@
           quiz.append(scoreElem).fadeIn();
           $('#next').hide();
           $('#prev').hide();
-          $('#start').show();
+          $('#start').hide();
         }
       });
     }
@@ -404,7 +404,6 @@
           }
           questionCounter = 0;
           selections = [];
-          displayNext();
           $('#start').hide();
        });
 
@@ -413,7 +412,7 @@
       return score;
     }
 
-    createRetakeQuizView()
+    createRetakeQuizView();
   };
 
   function createRetakeQuizView() {
@@ -433,7 +432,6 @@
         {% endif %}
       {% endfor %}
     {% endfor %}
-
     div.innerHTML = 'You have already attempted the quiz. <br /> You got ' + correctAnswer + ' questions correct out of ' + totalQuestions + ' and your score was ' + marksObtained + '/' + totalMarks + '.';
   }
 
@@ -441,6 +439,7 @@
   {% if not user.is_authenticated %}
   $('#loginModal').modal('toggle');
   {% elif user.is_authenticated and quiz_attempted %}
+  createRetakeQuizView();
   $('#retakeModal').modal('toggle');
   {% elif user.is_authenticated and not quiz_attempted %}
   $('#quizModal').modal('toggle');
