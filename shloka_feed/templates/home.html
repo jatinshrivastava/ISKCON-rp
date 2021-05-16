@@ -181,7 +181,12 @@
 
 {% endblock %}
 {% block javascript %}
-<script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('hide.bs.modal','#quizModal', function () {
+      location.reload();
+    });
+  });
         /*  function validateForm() {
         console.log("entry")
         var chapter = $("#chapter");
@@ -216,7 +221,7 @@
 }
       var object = {
       id: {{quiz.id}},
-      question: "{{quiz.question}}",
+      question: "{{quiz.question|linebreaksbr}}",
       choices: ["{{quiz.optionA}}", "{{quiz.optionB}}", "{{quiz.optionC}}", "{{quiz.optionD}}"],
       correctAnswer: correctAnswer,
       marks:{{quiz.point}}
