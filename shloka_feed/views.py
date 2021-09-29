@@ -1,13 +1,25 @@
 from django.shortcuts import render
-from shloka_feed.models import Shloka
+from shloka_feed.models import Shloka, UserAnswerModel, QuizModel
+import json
 from django.http import HttpResponse, Http404
-from django.http import JsonResponse
 from django.views.generic.base import TemplateView
 from django.views.generic import ListView, CreateView, UpdateView
+
+from users.models import CustomUser
 from .forms import ShlokaForm
 from django.db.models import Q
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.middleware import csrf
+
+
+def get_or_create_csrf_token(request):
+    token = request.META.get('CSRF_COOKIE', None)
+    if token is None:
+        token = csrf._get_new_csrf_key()
+        request.META['CSRF_COOKIE'] = token
+    request.META['CSRF_COOKIE_USED'] = True
+    return token
 
    
 def desired_shloka(request, chapter,shloka_no):
@@ -31,6 +43,16 @@ def desired_shloka(request, chapter,shloka_no):
         template = "home.html"
         id = Shloka.objects.filter(Q(chapter=chapter) & Q(shloka_no=shloka_no)).values('id')[0]['id']
         shloka = Shloka.objects.get(id=id)
+        current_user = request.user
+        if request.user.is_authenticated:
+            quiz_attempted = UserAnswerModel.objects.filter(Q(user=current_user) & Q(shloka=shloka))
+            if not quiz_attempted:
+                quiz_attempted = None
+        else:
+            quiz_attempted = None
+
+        question_data = QuizModel.objects.filter(shloka=shloka)
+
         #get_chapter_name
         if chapter == 1:
             chapter_name = 'कुरुक्षेत्र के युद्धस्थल में सैन्यनिरीक्षण'
@@ -70,11 +92,36 @@ def desired_shloka(request, chapter,shloka_no):
             chapter_name = 'उपसंहार - संन्यास की सिद्धि'
         #form
         if request.method == 'POST':
-            form = ShlokaForm(request.POST)
-            chapter = form.data['chapter']
-            shloka_no = form.data['shloka_no']
-            url = reverse('desired_shloka', kwargs={'chapter':chapter, 'shloka_no':shloka_no})
-            return HttpResponseRedirect(url)
+            if "change_shloka" in request.POST:
+                form = ShlokaForm(request.POST)
+                chapter = form.data['chapter']
+                shloka_no = form.data['shloka_no']
+                url = reverse('desired_shloka', kwargs={'chapter':chapter, 'shloka_no':shloka_no})
+                return HttpResponseRedirect(url)
+            elif 'data' in request.POST:
+                responseArr = request.POST.get("data", "")
+                parsedArray = json.loads(responseArr)
+                for element in parsedArray:
+                    question = QuizModel.objects.get(Q(id=element['question_id']))
+                    if question.answer == element['selected_choice']:
+                        isCorrect = True
+                    else:
+                        isCorrect = False
+                    previous_attempted = UserAnswerModel.objects.filter(Q(user=current_user) & Q(question=question)).exists()
+                    if previous_attempted:
+                        previous_data = UserAnswerModel.objects.get(Q(user=current_user) & Q(question=question))
+                        previous_data.selected_choice = element['selected_choice']
+                        previous_data.is_correct = isCorrect
+                        previous_data.save()
+                    else:
+                        useranswer = UserAnswerModel(
+                            user=current_user,
+                            shloka=shloka,
+                            question=question,
+                            selected_choice=element['selected_choice'],
+                            is_correct=isCorrect
+                        )
+                        useranswer.save()
         #prev_shloka
         prev_shloka_exists = Shloka.objects.filter(id=id-1).exists()
         if(prev_shloka_exists==True):
@@ -97,6 +144,8 @@ def desired_shloka(request, chapter,shloka_no):
             "next_shloka": next_shloka,
             "url": url,
             "shloka": shloka,
+            "quiz_attempted": quiz_attempted,
+            "question_data": question_data,
             "chapter_name": chapter_name,
         }
     return render(request, template, context)

@@ -3,110 +3,190 @@
 {% block page_content %}
 <!-- Mask & flexbox options-->
 
-<h2 class="mt-5 text-center"><strong>अध्याय {{ shloka.chapter }}:</strong> {{ chapter_name }}
-    <br>
-    <hr class="w-50">
+<h2 class="mt-5 text-center"><strong>अध्याय {{ shloka.chapter }}:</strong> {{ chapter_name }}</h2>
+<br>
+<hr class="w-50">
 
-    <!--First row-->
-    <div class="features-small mb-5 mt-5 wow fadeIn col-lg-10 mx-auto">
-        {% if url == '' %}{% else %}
-        <!--Second column-->
-        <div class="mt-5 mb-5 col-lg-8 mx-auto">
-            <div class="">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="{{ url }}" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-        <!--/Second column-->
-        {% endif %}
-        <!--First column-->
+<!--First row-->
+<div class="features-small mb-5 mt-5 wow fadeIn col-lg-10 mx-auto">
+    {% if url == '' %}{% else %}
+    <!--Second column-->
+    <div class="mt-5 mb-5 col-lg-8 mx-auto">
         <div class="">
-            <!--First row-->
-            <div class="text-center">
-                <div class="">
-                    <h2 class="feature-title"><strong>श्लोक {{ shloka.chapter }}. {{ shloka.shloka_no }} </strong></h2>
-                    <hr class="col-3">
-                </div>
-                <div class="">
-                    <h5 class=""><strong>{{ shloka.shloka| linebreaks }}</strong>
-                    </h5>
-                    <div style="height:20px"></div>
-                </div>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{ url }}" allowfullscreen></iframe>
             </div>
-            <!--/First row-->
-
-            <!--Second row-->
-            <div class="">
-                <div class="text-center">
-                    <!-- <h2 class="feature-title"><strong>Word Meaning</strong></h2> -->
-                    <hr class="col-4">
-                </div>
-                <div class="text-justify">
-                    <h5 class=""><strong>{{ shloka.word_meaning }}</strong>
-                    </h5>
-                    <div style="height:20px"></div>
-                </div>
-            </div>
-            <!--/Second row-->
         </div>
-        <!--/First column-->
-
-        <!--Third column-->
-        <div class="">
-            <!--First row-->
-            <div class="text-center">
-                <div class="">
-                    <h2 class="feature-title"><strong>भावार्थ</strong></h2>
-                    <hr class="col-3">
-                </div>
-                <div class="">
-                    <h5 class=""><strong>{{ shloka.meaning }}
-                        </strong></h5>
-                    <div style="height:20px"></div>
-                </div>
-            </div>
-            <!--/First row-->
-
-            <!--Second row-->
-            <div class="">
-                <div class="text-center">
-                    <h2 class="feature-title"><strong>तात्पर्य</strong></h2>
-                    <hr class="col-3">
-                </div>
-                <div class="text-justify">
-                    <h5 class=""><strong>{{ shloka.explanation| linebreaks }}</strong>
-                    </h5>
-                    <div style="height:20px"></div>
-                </div>
-            </div>
-            <!--/Second row-->
-
-        </div>
-        <!--/Third column-->
+    </div>
+    <!--/Second column-->
+    {% endif %}
+    <!--First column-->
+    <div class="">
         <!--First row-->
-        <div class="d-flex justify-content-center mt-5">
-            <div class="">{% if prev_shloka.id == shloka.id %}{% else %}<a
-                    class="far fa-arrow-alt-circle-left btn-icons"
-                    href="{% url 'desired_shloka' chapter=prev_shloka.chapter shloka_no=prev_shloka.shloka_no %}"></a>
-                &nbsp;
-                {% endif %}
-                <a class="fas fa-book btn-icons"
-                    href="{% url 'desired_shloka' chapter=shloka.chapter shloka_no=0 %}"></a>
-                &nbsp;
-                {% if next_shloka.id == shloka.id %}{% else %}
-                <a class="far fa-arrow-alt-circle-right btn-icons"
-                    href="{% url 'desired_shloka' chapter=next_shloka.chapter shloka_no=next_shloka.shloka_no %}"></a>
-                {% endif %}
+        <div class="text-center">
+            <div class="">
+                <h2 class="feature-title"><strong>श्लोक {{ shloka.chapter }}. {{ shloka.shloka_no }} </strong></h2>
+                <hr class="col-3">
+            </div>
+            <div class="">
+                <h5 class=""><strong>{{ shloka.shloka| linebreaks }}</strong>
+                </h5>
+                <div style="height:20px"></div>
             </div>
         </div>
         <!--/First row-->
+
+        <!--Second row-->
+        <div class="">
+            <div class="text-center">
+                <!-- <h2 class="feature-title"><strong>Word Meaning</strong></h2> -->
+                <hr class="col-4">
+            </div>
+            <div class="text-justify">
+                <h5 class=""><strong>{{ shloka.word_meaning }}</strong>
+                </h5>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+        <!--/Second row-->
+    </div>
+    <!--/First column-->
+
+    <!--Third column-->
+    <div class="">
+        <!--First row-->
+        <div class="text-center">
+            <div class="">
+                <h2 class="feature-title"><strong>भावार्थ</strong></h2>
+                <hr class="col-3">
+            </div>
+            <div class="">
+                <h5 class=""><strong>{{ shloka.meaning }}
+                </strong></h5>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+        <!--/First row-->
+
+        <!--Second row-->
+        <div class="">
+            <div class="text-center">
+                <h2 class="feature-title"><strong>तात्पर्य</strong></h2>
+                <hr class="col-3">
+            </div>
+            <div class="text-justify">
+                <h5 class=""><strong>{{ shloka.explanation| linebreaks }}</strong>
+                </h5>
+                <div style="height:20px"></div>
+            </div>
+        </div>
+        <!--/Second row-->
+
+    </div>
+    <!--/Third column-->
+    <div class="text-center">
+        <!-- Button trigger modal -->
+        {% if shloka.quizIsActive %}
+        <button type="button" class="btn btn-outline-warning" data-mdb-ripple-color="dark" onclick="showModal()">
+        Participate in quiz
+        </button>
+        {% else %}
+        {% endif %}
+
+    </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><strong>श्लोक {{ shloka.chapter }}. {{ shloka.shloka_no }} </strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Please login/ register
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="{% url 'login' %}"><button type="button" class="btn btn-primary">Login</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="retakeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><strong>श्लोक {{ shloka.chapter }}. {{ shloka.shloka_no }} </strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id='retake-quiz-body'>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick = "retakeQuiz()">Retake quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="quizModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><strong>श्लोक {{ shloka.chapter }}. {{ shloka.shloka_no }} </strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id='quiz'></div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                    <a class="far fa-arrow-alt-circle-left btn-icons fa-2x button" id='prev'></a>
+                    <div class="p-2 flex-grow-1"></div>
+                    <a class="far fa-arrow-alt-circle-right btn-icons fa-2x button" id='next'></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--First row-->
+    <div class="d-flex justify-content-center mt-5">
+        <div class="">{% if prev_shloka.id == shloka.id %}{% else %}<a
+                class="far fa-arrow-alt-circle-left btn-icons fa-2x"
+                href="{% url 'desired_shloka' chapter=prev_shloka.chapter shloka_no=prev_shloka.shloka_no %}"></a>
+            &nbsp;
+            {% endif %}
+            <a class="fas fa-book btn-icons fa-2x"
+               href="{% url 'desired_shloka' chapter=shloka.chapter shloka_no=0 %}"></a>
+            &nbsp;
+            {% if next_shloka.id == shloka.id %}{% else %}
+            <a class="far fa-arrow-alt-circle-right btn-icons fa-2x"
+               href="{% url 'desired_shloka' chapter=next_shloka.chapter shloka_no=next_shloka.shloka_no %}"></a>
+            {% endif %}
+        </div>
     </div>
     <!--/First row-->
+</div>
+<!--/First row-->
 
-    {% endblock %}
-    {% block javascript %}
-    <script>
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('hide.bs.modal','#quizModal', function () {
+      location.reload();
+    });
+  });
         /*  function validateForm() {
         console.log("entry")
         var chapter = $("#chapter");
@@ -120,5 +200,262 @@
         }
 
     } */
-    </script>
-    {% endblock %}
+    window.onload = function initForm() {
+    var questions = [];
+
+    {% for quiz in question_data %}
+      var correctAnswer;
+            switch ("{{quiz.answer}}") {
+  case "A":
+    correctAnswer = 0;
+    break;
+  case "B":
+    correctAnswer = 1;
+    break;
+  case "C":
+     correctAnswer = 2;
+    break;
+  case "D":
+    correctAnswer = 3;
+    break;
+}
+      var object = {
+      id: {{quiz.id}},
+      question: "{{quiz.question|linebreaksbr}}",
+      choices: ["{{quiz.optionA}}", "{{quiz.optionB}}", "{{quiz.optionC}}", "{{quiz.optionD}}"],
+      correctAnswer: correctAnswer,
+      marks:{{quiz.point}}
+      }
+      questions.push(object)
+    {% endfor %}
+
+
+    var questionCounter = 0; //Tracks question number
+    var selections = []; //Array containing user choices
+    var quiz = $('#quiz'); //Quiz div object
+
+    // Display initial question
+    displayNext();
+
+    // Click handler for the 'next' button
+    $('#next').on('click', function (e) {
+      e.preventDefault();
+
+      // Suspend click listener during fade animation
+      if(quiz.is(':animated')) {
+        return false;
+      }
+      choose();
+
+      // If no user selection, progress is stopped
+      if (isNaN(selections[questionCounter])) {
+        alert('Please make a selection!');
+      } else {
+        questionCounter++;
+        displayNext();
+      }
+    });
+
+    // Click handler for the 'prev' button
+    $('#prev').on('click', function (e) {
+      e.preventDefault();
+
+      if(quiz.is(':animated')) {
+        return false;
+      }
+      choose();
+      questionCounter--;
+      displayNext();
+    });
+
+    // Click handler for the 'Start Over' button
+    $('#start').on('click', function (e) {
+      e.preventDefault();
+
+      if(quiz.is(':animated')) {
+        return false;
+      }
+      questionCounter = 0;
+      selections = [];
+      displayNext();
+      $('#start').hide();
+    });
+
+    // Animates buttons on hover
+    $('.button').on('mouseenter', function () {
+      $(this).addClass('active');
+    });
+    $('.button').on('mouseleave', function () {
+      $(this).removeClass('active');
+    });
+
+    // Creates and returns the div that contains the questions and
+    // the answer selections
+    function createQuestionElement(index) {
+      var qElement = $('<div>', {
+        id: 'question'
+      });
+
+      var header = $('<h2>Question ' + (index + 1) + ':</h2>');
+      qElement.append(header);
+
+      var question = $('<p>').append(questions[index].question);
+      qElement.append(question);
+
+      var radioButtons = createRadios(index);
+      qElement.append(radioButtons);
+
+      return qElement;
+    }
+
+    // Creates a list of the answer choices as radio inputs
+    function createRadios(index) {
+      var radioList = $('<ul>');
+      var item;
+      var input = '';
+      for (var i = 0; i < questions[index].choices.length; i++) {
+        item = $('<li>');
+        input = '<input type="radio" name="answer" value=' + i + ' />';
+        input += questions[index].choices[i];
+        item.append(input);
+        radioList.append(item);
+      }
+      return radioList;
+    }
+
+    // Reads the user selection and pushes the value to an array
+    function choose() {
+      selections[questionCounter] = +$('input[name="answer"]:checked').val();
+    }
+
+    // Displays next requested element
+    function displayNext() {
+      quiz.fadeOut(function() {
+        $('#question').remove();
+
+        if(questionCounter < questions.length){
+          var nextQuestion = createQuestionElement(questionCounter);
+          quiz.append(nextQuestion).fadeIn();
+          if (!(isNaN(selections[questionCounter]))) {
+            $('input[value='+selections[questionCounter]+']').prop('checked', true);
+          }
+
+          // Controls display of 'prev' button
+          if(questionCounter === 1){
+            $('#prev').show();
+          } else if(questionCounter === 0){
+
+            $('#prev').hide();
+            $('#next').show();
+          }
+        }else {
+          var scoreElem = displayScore();
+          quiz.append(scoreElem).fadeIn();
+          $('#next').hide();
+          $('#prev').hide();
+          $('#start').hide();
+        }
+      });
+    }
+
+    // Computes score and returns a paragraph element to be displayed
+    function displayScore() {
+      var score = $('<p>',{id: 'question'});
+      var data = []
+      var numCorrect = 0;
+      var totalMarks = 0;
+      var marksObtained = 0;
+      for (var i = 0; i < selections.length; i++) {
+      totalMarks += questions[i].marks
+      var selectedChoice = "";
+                switch (selections[i]) {
+  case 0:
+    selectedChoice = "A";
+    break;
+  case 1:
+    selectedChoice = "B";
+    break;
+  case 2:
+     selectedChoice = "C";
+    break;
+  case 3:
+    selectedChoice = "D";
+    break;
+}
+      var object = {
+      "question_id": questions[i].id,
+      "selected_choice": selectedChoice,
+      }
+      data.push(object)
+      console.log("selection is", selections[i])
+      console.log("answer  is", questions[i].correctAnswer)
+        if (selections[i] == questions[i].correctAnswer) {
+          numCorrect++;
+          marksObtained += questions[i].marks
+        }
+      }
+      
+       $.ajax({
+         url: '',
+         data: {
+            'data': JSON.stringify(data),
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+        },
+         type: 'POST'
+       }).done(function(response){
+         console.log(response);
+         if(quiz.is(':animated')) {
+          return false;
+          }
+          questionCounter = 0;
+          selections = [];
+          $('#start').hide();
+       });
+
+      score.append('You got ' + numCorrect + ' questions out of ' +
+                   questions.length + ' right!!! \n Your score was ' + marksObtained + ' out of ' + totalMarks);
+      return score;
+    }
+
+    createRetakeQuizView();
+  };
+
+  function createRetakeQuizView() {
+    var div = document.getElementById('retake-quiz-body');
+    var totalQuestions = 0;
+    var correctAnswer = 0;
+    var totalMarks = 0;
+    var marksObtained = 0;
+
+    {% for questionDataElement in question_data %}
+      totalMarks += {{questionDataElement.point}}
+      totalQuestions += 1
+      {% for quiz_attempted_Element in quiz_attempted %}
+        {% if questionDataElement == quiz_attempted_Element.question and quiz_attempted_Element.is_correct == True %}
+        marksObtained += {{questionDataElement.point}}
+        correctAnswer += 1
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    div.innerHTML = 'You have already attempted the quiz. <br /> You got ' + correctAnswer + ' questions correct out of ' + totalQuestions + ' and your score was ' + marksObtained + '/' + totalMarks + '.';
+  }
+
+  function showModal() {
+  {% if not user.is_authenticated %}
+  $('#loginModal').modal('toggle');
+  {% elif user.is_authenticated and quiz_attempted %}
+  createRetakeQuizView();
+  $('#retakeModal').modal('toggle');
+  {% elif user.is_authenticated and not quiz_attempted %}
+  $('#quizModal').modal('toggle');
+  {% else %}
+  {% endif %}
+  }
+
+  function retakeQuiz() {
+  $('#retakeModal').modal('hide');
+  $('#quizModal').modal('show');
+}
+
+</script>
+{% endblock %}
